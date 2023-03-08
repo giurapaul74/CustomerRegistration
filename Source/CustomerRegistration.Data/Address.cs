@@ -1,4 +1,6 @@
-﻿namespace CustomerRegistration.Data
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CustomerRegistration.Data
 {
     public class Address
     {

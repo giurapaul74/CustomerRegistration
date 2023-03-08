@@ -1,0 +1,28 @@
+﻿@model CustomerViewModel
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h1>Customers</h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Website</th>
+                <th>Email Address</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (CustomerViewModel.Customer customer in Model.Customers)
+        {
+                    <tr>
+                        <td>@customer.Name</td>
+                        <td>@customer.Website</td>
+                        <td>@customer.EmailAddress</td>
+                        <td>@customer.PhoneNumber</td>
+                    </tr>
+        }
+        </tbody>
+    </table>
