@@ -1,0 +1,32 @@
+﻿@model CustomerDetailsViewModel
+
+@{
+    ViewBag.Title = "Customer Details";
+}
+
+<div>
+     <table>
+         <thead>
+             <tr>
+                <th>@Model.Name</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                <td>Website: @Model.Website</td>
+             </tr>
+             <tr>
+                <td>Email Address: @Model.EmailAddress</td>
+             </tr>
+             <tr>
+                 <td>Phone number: @Model.PhoneNumber</td>
+             </tr>
+             <tr>
+                <td>Postal Address: @Model.PostalAddress</td>
+             </tr>
+             <tr>
+                <td>Invoice Address: @Model.InvoiceAddress</td>
+             </tr>
+         </tbody>
+     </table>
+</div>

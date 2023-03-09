@@ -2,6 +2,7 @@
 using CustomerRegistration.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace CustomerRegistration.Web.Controllers
 {
@@ -28,11 +29,11 @@ namespace CustomerRegistration.Web.Controllers
             return View(customerViewModel);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{customerId}")]
         public async Task<IActionResult> GetCustomerDetails(int customerId)
         {
-            var customerDetailsViewModel = _context.Customers
-                .Where(customer => customer.Id== customerId)
+            var customerDetailsViewModel = await _context.Customers
+                .Where(customer => customer.Id == customerId)
                 .Select(customer => new CustomerDetailsViewModel(
                     customer.Name,
                     customer.Website,
@@ -45,12 +46,17 @@ namespace CustomerRegistration.Web.Controllers
                         customer.PostalAddress.City,
                         customer.PostalAddress.Country),
                     new CustomerDetailsViewModel.Address(
-                        customer.PostalAddress.Street,
-                        customer.PostalAddress.Number,
-                        customer.PostalAddress.PostalCode,
-                        customer.PostalAddress.City,
-                        customer.PostalAddress.Country)))
+                        customer.InvoiceAddress.Street,
+                        customer.InvoiceAddress.Number,
+                        customer.InvoiceAddress.PostalCode,
+                        customer.InvoiceAddress.City,
+                        customer.InvoiceAddress.Country)))
                 .SingleOrDefaultAsync();
+
+            if (customerDetailsViewModel is null)
+            {
+                return View("ErrorMessage", new ErrorMessageViewModel($"Customer with ID {customerId} could not be found."));
+            }
 
             return View(customerDetailsViewModel);
         }

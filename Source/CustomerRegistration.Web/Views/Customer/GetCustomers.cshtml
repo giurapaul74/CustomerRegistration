@@ -12,6 +12,7 @@
                 <th>Website</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +23,11 @@
                         <td>@customer.Website</td>
                         <td>@customer.EmailAddress</td>
                         <td>@customer.PhoneNumber</td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Customer" asp-action="GetCustomerDetails" asp-route-customerid="@customer.Id">View Details</a>
+                        </td>
                     </tr>
+                    
         }
         </tbody>
     </table>
