@@ -1,8 +1,10 @@
 ﻿using CustomerRegistration.Data;
 using CustomerRegistration.Web.Models;
+using CustomerRegistration.Web.Models.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CustomerRegistration.Web.Controllers
 {
@@ -59,6 +61,72 @@ namespace CustomerRegistration.Web.Controllers
             }
 
             return View(customerDetailsViewModel);
+        }
+
+        [HttpGet("AddCustomer")]
+        public IActionResult AddCustomer()
+        {
+            return View();
+        }
+
+
+        [HttpPost("AddCustomer")]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddCustomer(AddCustomerViewModel model)
+        {
+            var validator = new AddCustomerViewModelValidator();
+            var result = validator.Validate(model);
+
+            if (!result.IsValid)
+            {
+
+                // The model is invalid, display validation errors to the user
+                foreach (var failure in result.Errors)
+                {
+                    ModelState.AddModelError(failure.PropertyName, failure.ErrorMessage);
+                }
+
+                return View(model);
+            }
+            else
+            {
+                var customer = new Customer
+                {
+                    Name = model.Name,
+                    Website = model.Website,
+                    EmailAddress = model.EmailAddress,
+                    PhoneNumber = model.PhoneNumber,
+                    PostalAddress = new Address
+                    {
+                        Street = model.PostalAddressStreet,
+                        Number = model.PostalAddressStreetNumber,
+                        PostalCode = model.PostalAddressPostalCode,
+                        City = model.PostalAddressCity,
+                        Country = model.PostalAddressCountry
+                    },
+                };
+
+                if (!model.IsInvoiceAddressDifferent)
+                {
+                    customer.InvoiceAddress = customer.PostalAddress;
+                }
+                else
+                {
+                    customer.InvoiceAddress = new Address
+                    {
+                        Street = model.InvoiceAddressStreet,
+                        Number = model.InvoiceAddressStreetNumber,
+                        PostalCode = model.InvoiceAddressPostalCode,
+                        City = model.InvoiceAddressCity,
+                        Country = model.InvoiceAddressCountry
+                    };
+                }
+
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Customers");
         }
     }
 }

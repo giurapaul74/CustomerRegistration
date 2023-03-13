@@ -23,7 +23,7 @@ namespace CustomerRegistration.Web.Models
 
         public class Address
         {
-            public Address(string street, int streetNumber, string postalCode, string city, string country)
+            public Address(string street, string streetNumber, string postalCode, string city, string country)
             {
                 Street = street;
                 StreetNumber = streetNumber;
@@ -33,7 +33,7 @@ namespace CustomerRegistration.Web.Models
             }
 
             public string Street { get; set; }
-            public int StreetNumber { get; set; }
+            public string StreetNumber { get; set; }
             public string PostalCode { get; set; }
             public string City { get; set; }
             public string Country { get; set; }

@@ -23,7 +23,7 @@ namespace CustomerRegistration.Data
                 {
                     Id = 1,
                     Street = "New Wantons",
-                    Number = 56,
+                    Number = "56",
                     PostalCode= "762853",
                     City = "DC",
                     Country = "US"
@@ -34,7 +34,7 @@ namespace CustomerRegistration.Data
                 {
                     Id = 2,
                     Street = "Checkery Street",
-                    Number = 543,
+                    Number = "543",
                     PostalCode= "358394",
                     City = "New Orleans",
                     Country = "US"
