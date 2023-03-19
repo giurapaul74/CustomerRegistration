@@ -6,46 +6,48 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(x => x.Name)
-    @Html.TextBoxFor(x => x.Name)
-    @Html.ValidationMessageFor(x => x.Name)
+    <div class="input-fields">
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
 
-    @Html.LabelFor(x => x.Website)
-    @Html.TextBoxFor(x => x.Website)
-    @Html.ValidationMessageFor(x => x.Website)
+        @Html.LabelFor(x => x.Website)
+        @Html.TextBoxFor(x => x.Website)
+        @Html.ValidationMessageFor(x => x.Website)
 
-    @Html.LabelFor(x => x.EmailAddress)
-    @Html.TextBoxFor(x => x.EmailAddress)
-    @Html.ValidationMessageFor(x => x.EmailAddress)
+        @Html.LabelFor(x => x.EmailAddress)
+        @Html.TextBoxFor(x => x.EmailAddress)
+        @Html.ValidationMessageFor(x => x.EmailAddress)
 
-    @Html.LabelFor(x => x.PhoneNumber)
-    @Html.TextBoxFor(x => x.PhoneNumber)
-    @Html.ValidationMessageFor(x => x.PhoneNumber)
+        @Html.LabelFor(x => x.PhoneNumber)
+        @Html.TextBoxFor(x => x.PhoneNumber)
+        @Html.ValidationMessageFor(x => x.PhoneNumber)
 
-    @Html.LabelFor(x => x.PostalAddressStreet)
-    @Html.TextBoxFor(x => x.PostalAddressStreet)
-    @Html.ValidationMessageFor(x => x.PostalAddressStreet)
+        @Html.LabelFor(x => x.PostalAddressStreet)
+        @Html.TextBoxFor(x => x.PostalAddressStreet)
+        @Html.ValidationMessageFor(x => x.PostalAddressStreet)
 
-    @Html.LabelFor(x => x.PostalAddressStreetNumber)
-    @Html.TextBoxFor(x => x.PostalAddressStreetNumber)
-    @Html.ValidationMessageFor(x => x.PostalAddressStreetNumber)
+        @Html.LabelFor(x => x.PostalAddressStreetNumber)
+        @Html.TextBoxFor(x => x.PostalAddressStreetNumber)
+        @Html.ValidationMessageFor(x => x.PostalAddressStreetNumber)
 
-    @Html.LabelFor(x => x.PostalAddressPostalCode)
-    @Html.TextBoxFor(x => x.PostalAddressPostalCode)
-    @Html.ValidationMessageFor(x => x.PostalAddressPostalCode)
+        @Html.LabelFor(x => x.PostalAddressPostalCode)
+        @Html.TextBoxFor(x => x.PostalAddressPostalCode)
+        @Html.ValidationMessageFor(x => x.PostalAddressPostalCode)
 
-    @Html.LabelFor(x => x.PostalAddressCity)
-    @Html.TextBoxFor(x => x.PostalAddressCity)
-    @Html.ValidationMessageFor(x => x.PostalAddressCity)
+        @Html.LabelFor(x => x.PostalAddressCity)
+        @Html.TextBoxFor(x => x.PostalAddressCity)
+        @Html.ValidationMessageFor(x => x.PostalAddressCity)
 
-    @Html.LabelFor(x => x.PostalAddressCountry)
-    @Html.TextBoxFor(x => x.PostalAddressCountry)
-    @Html.ValidationMessageFor(x => x.PostalAddressCountry)
+        @Html.LabelFor(x => x.PostalAddressCountry)
+        @Html.TextBoxFor(x => x.PostalAddressCountry)
+        @Html.ValidationMessageFor(x => x.PostalAddressCountry)
 
-    @Html.LabelFor(x => x.IsInvoiceAddressDifferent)
-    @Html.CheckBoxFor(x => x.IsInvoiceAddressDifferent)
+        @Html.LabelFor(x => x.IsInvoiceAddressDifferent)
+        @Html.CheckBoxFor(x => x.IsInvoiceAddressDifferent)
+    </div>
 
-    <div id="invoice-address" style="display:none;">
+    <div id="invoice-address" style="display:none;" class="input-fields">
         @Html.LabelFor(x => x.InvoiceAddressStreet)
         @Html.TextBoxFor(x => x.InvoiceAddressStreet)
         @Html.ValidationMessageFor(x => x.InvoiceAddressStreet)
